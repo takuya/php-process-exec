@@ -70,7 +70,7 @@ class SignalCatchingTest extends TestCase {
     $pid = $executor->start();
     usleep( 1000*80 );//ensure process start
     $pid = $executor->getSubProcessId();
-    //
+    // terminate process
     posix_kill( $pid, $term_signal );
     while(posix_kill(intval($pid), 0)){
         usleep( 1000*80 );//ensure kill
