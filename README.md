@@ -5,9 +5,17 @@ This help to run process by fork ( proc_open ). This package depends on [proc_op
 Handling process, *Run Long time command* safety. and Event handler model. 
 
 ## Installing
-
+by packagist
 ```shell
-
+composer require takuya/php-process-exec
+```
+by GitHub
+```shell
+name='php-process-exec'
+composer config repositories.$name \
+vcs https://github.com/takuya/$name  
+composer require takuya/$name:master
+composer install
 ```
 
 ### Example
