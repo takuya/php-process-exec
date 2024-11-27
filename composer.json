@@ -1,5 +1,8 @@
 {
   "name": "takuya/php-process-exec",
+  "version": "0.1",
+  "license": "GPL-3.0-or-later",
+  "type": "library",
   "require": {
     "php": ">=8.0",
     "ext-pcntl": "*",
