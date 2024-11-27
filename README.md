@@ -20,6 +20,18 @@ composer install
 
 ### Example
 
+Pipe process 
+```php
+// prepare
+$p1arg = new ExecArgStruct("cat /etc/passwd ");
+$p2arg = new ExecArgStruct('grep takuya');
+// pipe 
+$p1 = new ProcessExecutor($p1arg);
+$p2 = $p1->pipe($p2arg);
+$p2->start();
+echo $p2->getOutput();
+```
+
 Run CMD STRING by bash.
 ```php
 <?php
