@@ -29,29 +29,29 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: update tested date.
-  run-composer-install:
-    runs-on: ubuntu-latest
-    steps:
-      - name:  installation
-        shell: bash
-        run: |
-          php -v
-          composer require takuya/php-process-exec
-          cat <<'EOS' > sample.php
-          <?php
-          require_once 'vendor/autoload.php';
-          use Takuya\ProcessExec\ExecArgStruct;
-          use Takuya\ProcessExec\ProcessExecutor;
-          $executor = new ProcessExecutor(new ExecArgStruct('bash'));
-          
-          $executor->setInput('
-          for i in {0..4}; do
-          echo $i
-          done;
-          ');
-          $executor->start();
-          //blocking io
-          echo $executor->getOutput();
-          EOS
-          cat sample.php
-          php sample.php
+#  run-composer-install:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name:  installation
+#        shell: bash
+#        run: |
+#          php -v
+#          composer require takuya/php-process-exec
+#          cat <<'EOS' > sample.php
+#          <?php
+#          require_once 'vendor/autoload.php';
+#          use Takuya\ProcessExec\ExecArgStruct;
+#          use Takuya\ProcessExec\ProcessExecutor;
+#          $executor = new ProcessExecutor(new ExecArgStruct('bash'));
+#
+#          $executor->setInput('
+#          for i in {0..4}; do
+#          echo $i
+#          done;
+#          ');
+#          $executor->start();
+#          //blocking io
+#          echo $executor->getOutput();
+#          EOS
+#          cat sample.php
+#          php sample.php

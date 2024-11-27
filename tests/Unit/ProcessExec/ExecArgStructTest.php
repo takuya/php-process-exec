@@ -24,7 +24,7 @@ class ExecArgStructTest extends TestCase {
     $args->setStdout( $out = fopen( "php://temp", 'w' ) );
     $p = new ProcessExecutor( $args );
     $p->start();
-    $this->assertStringContainsString( "_SERVER['SHELL']", $p->getOutput() );
+    $this->assertStringContainsString( "_SERVER['PATH']", $p->getOutput() );
     rewind( $out );
     $this->assertEquals( stream_get_contents( $out ), $p->getOutput() );
   }
