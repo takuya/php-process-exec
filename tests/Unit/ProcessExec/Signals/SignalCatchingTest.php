@@ -72,7 +72,7 @@ class SignalCatchingTest extends TestCase {
     $pid = $executor->getSubProcessId();
     // terminate process
     posix_kill( $pid, $term_signal );
-    while(posix_kill(intval($pid), 0)){
+    while($executor->getIsRunningFromPOSIX()){
         usleep( 1000*80 );//ensure kill
         posix_kill( $pid, $term_signal );
     }

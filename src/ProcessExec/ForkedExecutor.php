@@ -17,6 +17,9 @@ class ForkedExecutor extends ProcessExecutor {
   public function getSubProcessId (): ?int {
     return $this->cpid;
   }
+  public function getIsRunningFromPOSIX():bool{
+    return posix_kill(intval($this->cpid), 0);
+  }
   
   public function start () {
     if ( !function_exists( 'pcntl_fork' ) ) {
