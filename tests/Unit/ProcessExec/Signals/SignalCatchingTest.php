@@ -72,7 +72,10 @@ class SignalCatchingTest extends TestCase {
     $pid = $executor->getSubProcessId();
     //
     posix_kill( $pid, $term_signal );
-    usleep( 1000*80 );//ensure kill
+    while(posix_kill(intval($pid), 0)){
+        usleep( 1000*80 );//ensure kill
+        posix_kill( $pid, $term_signal );
+    }
     // フォーク先からデータもらう。
     $canceled_called = shm_get_var( $shm_canceled, $key_save_canceled );
     $finished_called = shm_get_var( $shm_finished, $key_save_finished );
