@@ -140,9 +140,9 @@ $proc->start();
 echo $proc->getOutput();
 ```
 
-By using Struct, we can check and validate arguments, such as indispensability argument, restrict command, check file accessible, before run.
+By using Struct, we can check and validate arguments, such as must option, restrict command, check file accessible, before run.
 
-Dividing role EXECUTION and VALIDATION , make classes simple. 
+Dividing role,  EXECUTION and VALIDATION , make process execution simple. 
 
 
 Example: argument checking and validation as construct.
