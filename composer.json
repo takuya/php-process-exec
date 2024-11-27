@@ -1,0 +1,33 @@
+{
+  "name": "takuya/php-process-exec",
+  "require": {
+    "php": ">=8.0",
+    "ext-pcntl": "*",
+    "ext-sysvshm": "*",
+    "ext-posix": "*",
+    "takuya/php-proc_open-wrapper": "^0.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Takuya\\": "src/",
+      "Takuya\\ProcessExec\\": "src/ProcessExec",
+      "Takuya\\Stream\\": "src/Stream",
+      "Takuya\\Event\\": "src/Event"
+    }
+  },
+  "authors": [
+    {
+      "name": "takuya",
+      "email": "55338+takuya@users.noreply.github.com"
+    }
+  ],
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5",
+    "larapack/dd": "^1.1"
+  }
+}
