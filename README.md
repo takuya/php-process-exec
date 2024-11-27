@@ -123,6 +123,10 @@ echo stream_get_contents($proc->stdout());
 ```
 Nonetheless, I still have frustration. when **Re-using** of COMMAND config (params+args+redirect) is messy. So I wrote a class to make Arguments as class instance ( command options ).
 
+## Command as Struct
+
+ExecArgStruct is Cmd itself not process.
+
 ```php
 <?php
 ##  command option as struct
