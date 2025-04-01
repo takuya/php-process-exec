@@ -8,7 +8,7 @@
     "ext-pcntl": "*",
     "ext-sysvshm": "*",
     "ext-posix": "*",
-    "takuya/php-proc_open-wrapper": "^0.1.0"
+    "takuya/php-proc_open-wrapper": "^0.4"
   },
   "autoload": {
     "psr-4": {
