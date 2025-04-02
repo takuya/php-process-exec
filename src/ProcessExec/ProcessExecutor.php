@@ -95,8 +95,9 @@ class ProcessExecutor {
     if ( $this->isSuspended() ) {
       return;
     }
-    $this->fireStreamEvent( ProcOpen::STDOUT, StdoutChanged::class );
-    $this->fireStreamEvent( ProcOpen::STDERR, StderrChanged::class );
+    $interval= [intval($this->watch_interval),intval($this->watch_interval*1000*1000)];
+    $this->fireStreamEvent( ProcOpen::STDOUT, StdoutChanged::class,...$interval);
+    $this->fireStreamEvent( ProcOpen::STDERR, StderrChanged::class,...$interval );
   }
   
   protected function waitSubProcess () {
