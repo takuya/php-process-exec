@@ -16,11 +16,13 @@ trait ObserveProcessStream {
   }
   
   protected function onStreamLine ( $fd_no, $class, $callback, $delim ) {
-    $this->addEventListener(
-      $class, fn( ProcessEvent $ev ) => (
-      ( $line = $ev->getExecutor()->getStream( $fd_no )->getReader()->readLine( $delim ) ) && $callback( $line )
-    )
-    );
+    // read at all possible.
+    $this->addEventListener( $class, function( ProcessEvent $ev ) use ( $fd_no, $delim, $callback ) {
+      while ( $line = $ev->getExecutor()->getStream( $fd_no )->getReader()->readLine( $delim ) ) {
+        $callback( $line );
+      }
+    } );
+    // read remains on process finished.
     $this->addEventListener(
       ProcessFinished::class,
       fn( ProcessEvent $ev ) => array_map(
