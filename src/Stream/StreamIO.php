@@ -24,11 +24,7 @@ class StreamIO {
   }
   
   public function readReady ( $timeout_sec = 0, $timeout_micro = 10 ) {
-    if ( $r = $this->select_read( $timeout_sec = 0, $timeout_micro = 10 ) > 0 ) {
-      return true;
-    }
-    
-    return false;
+    return $this->select_read( $timeout_sec, $timeout_micro );
   }
   
   protected function select_read ( $timeout_sec = 0, $timeout_micro = 10 ) {
