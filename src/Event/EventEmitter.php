@@ -18,10 +18,10 @@ trait EventEmitter {
   }
   
   /**
-   * @param string $name Class Name of Event ( ex. SomeEventCreated::class )
+   * @param mixed $ev Class Name of Event ( ex. SomeEventCreated::class )
    */
-  public function fireEvent ( string $name ) {
-    $event = new $name( $this );
+  public function fireEvent ( mixed $ev ) {
+    $event = is_string( $ev ) ? new $ev( $this ) : $ev;
     $this->handleEvent( $event );
   }
   
