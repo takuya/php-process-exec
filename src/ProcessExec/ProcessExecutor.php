@@ -118,7 +118,10 @@ class ProcessExecutor {
     } catch (ProcessExecutorException|RuntimeException $exception) {
       $this->last_exception = $exception;
       $this->fireEvent( ProcessErrorOccurred::class );
+    } catch (\Error $error) {
+      throw $error;
     } finally {
+      $this->proc->info->running && $this->stop();
       $this->fireEvent( ProcessFinished::class );
       $this->throw_exception && !empty( $this->last_exception ) && throw $this->last_exception;
     }
