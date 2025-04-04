@@ -10,11 +10,8 @@ class StreamReader {
   }
   
   public function readAll ( $delim = "\n" ) {
-    while ( !feof( $this->s->getStream() ) ) {
-      $line = $this->readLine( $delim );
-      if ( false !== $line ) {
-        yield $line;
-      }
+    while ( ( $line = $this->readLine( $delim ) ) !== false ) {
+      yield $line;
     }
   }
   
