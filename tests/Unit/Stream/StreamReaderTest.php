@@ -71,4 +71,18 @@ class StreamReaderTest extends TestCase {
       $this->assertMatchesRegularExpression( '/^\d+:\sHello World.$/', $line );
     }
   }
+  public function test_stream_without_a_trailing_newline(){
+    $fp = fopen( "php://memory", 'a' );
+    foreach ( range( 1, 10 ) as $i ) {
+      fwrite( $fp, sprintf( "%s>: Hello World.\r\n", str_repeat( '=', $i ) ) );
+    }
+    fwrite( $fp, sprintf( "%s>: EOF.", str_repeat( '=', ++$i ) ) );
+    rewind( $fp );
+    //
+    $sr = new StreamReader( new StreamIO( $fp ) );
+    $lines = iterator_to_array($sr->readAll());
+    $last_line = $lines[sizeof($lines)-1];
+    $this->assertMatchesRegularExpression( '/=+>:\sEOF.$/', $last_line );
+    
+  }
 }
