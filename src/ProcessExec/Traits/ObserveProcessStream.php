@@ -25,9 +25,9 @@ trait ObserveProcessStream {
     // read remains on process finished.
     $this->addEventListener(
       ProcessFinished::class,
-      fn( ProcessEvent $ev ) => array_map(
-        $callback,
-        iterator_to_array( $ev->getExecutor()->getStream( $fd_no )->getReader()->readAll( $delim ) ) ) );
+      fn( ProcessEvent $ev ) => array_map( $callback, iterator_to_array(
+        $ev->getExecutor()->getStream( $fd_no )->getReader()->readAll( $delim )
+      ) ) );
   }
   
   public function onStdErr ( $callback, $delim = "\n" ) {
