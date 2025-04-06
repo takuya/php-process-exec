@@ -18,7 +18,7 @@ trait ObserveProcessStream {
   protected function onStreamLine ( $fd_no, $class, $callback, $delim ) {
     // read at all possible.
     $this->addEventListener( $class, function( ProcessEvent $ev ) use ( $fd_no, $delim, $callback ) {
-      while ( $line = $ev->getExecutor()->getStream( $fd_no )->getReader()->readLine( $delim ) ) {
+      while ( ($line = $ev->getExecutor()->getStream( $fd_no )->getReader()->readLine( $delim ))!==false ) {
         $callback( $line );
       }
     } );
