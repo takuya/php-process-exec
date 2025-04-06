@@ -97,7 +97,7 @@ class ProcessExecutor {
     }
     $interval= [intval($this->watch_interval),intval($this->watch_interval*1000*1000)];
     $this->fireStreamEvent( ProcOpen::STDOUT, StdoutChanged::class,...$interval);
-    $this->fireStreamEvent( ProcOpen::STDERR, StderrChanged::class,...$interval );
+    $this->fireStreamEvent( ProcOpen::STDERR, StderrChanged::class,...[0,200] );
   }
   
   protected function waitSubProcess () {
