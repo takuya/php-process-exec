@@ -2,7 +2,6 @@
   "name": "takuya/php-process-exec",
   "type": "library",
   "description": "php process execution with event handling",
-  "version": "0.1.5 ",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
